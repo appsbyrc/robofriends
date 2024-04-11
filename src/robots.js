@@ -6,13 +6,13 @@ export const robots = [
     email: 'pchulo@gmail.com'
   },
   {
-    id: 2,
-    name: 'Ale Jandra',
+    id: 9,
+    name: 'Ale Jandra Mami',
     username: 'Alex',
     email: 'alex@gmail.com'
   },
   {
-    id: 3,
+    id: 6,
     name: 'Nick Cal',
     username: 'Nickal',
     email: 'nickal@gmail.com'
@@ -30,7 +30,7 @@ export const robots = [
     email: 'stininkinator@gmail.com'
   },
   {
-    id: 6,
+    id: 3,
     name: 'Jay Sus',
     username: 'jaysus',
     email: 'jsus@gmail.com'
@@ -48,7 +48,7 @@ export const robots = [
     email: 'azilla@gmail.com'
   },
   {
-    id: 9,
+    id: 2,
     name: 'Gman Alpha',
     username: 'Finisher',
     email: 'loveistheanswer@gmail.com'
