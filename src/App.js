@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
 import Cardlist from './Cardlist';
 import SearchBox from './SearchBox';
-import { robots } from "./robots";
+import Scroll from "./Scroll";
 import './App.css';
 
-
+//
 class App extends Component {
     constructor() {
         super()
         this.state = {
-            robots: robots,
+            robots: [],
             searchfield: ''
         }
     }
 
+    componentDidMount() {
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then(response => response.json())
+            .then(users => this.setState({ robots: users }));
+
+    }
     onSearchChange = (event) => {
         this.setState({ searchfield: event.target.value });
     }
@@ -23,18 +29,23 @@ class App extends Component {
         const filteredRobots = robots.filter(robot => {
             return robot.name.toLowerCase().includes(searchfield.toLowerCase());
         })
-        return !robots.length ?
-            <h1>Loading</h1> :
-            (
-                <div className='tc'>
-                    <h1 className='f1'>RoboFriends</h1>
-                    <SearchBox searchChange={this.onSearchChange} />
+        //below,if there's a delay display loading (if, else)  LOADING BAR
+        if (this.state.robots.length === 0) {
+            return <h1>Loading</h1>
+        } else {
+            return !robots.length ?
+                <h2>Loading</h2> :
+                (
+                    <div className='tc'>
+                        <h1 className='f1'>RoboFriends</h1>
+                        <SearchBox searchChange={this.onSearchChange} />
+                        <Scroll>
+                            <Cardlist robots={filteredRobots} />
+                        </Scroll>
 
-                    <Cardlist robots={filteredRobots} />
-
-                </div>
-            );
-
+                    </div>
+                );
+        }
     }
 
 }
